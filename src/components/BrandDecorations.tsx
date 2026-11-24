@@ -564,3 +564,184 @@ export function CameraLensGraphic({ className = "w-36 h-36" }: { className?: str
     </svg>
   );
 }
+
+/**
+ * Dark metallic antique-gold vintage condenser microphone on slender stand
+ * for the Contact page hero right edge.
+ */
+export function DarkGoldMicGraphic({
+  className = "w-44 h-64",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 180 280"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <defs>
+        <radialGradient id="darkMicAura" cx="52%" cy="38%" r="48%">
+          <stop offset="0%" stopColor="#D4A24C" stopOpacity="0.34" />
+          <stop offset="55%" stopColor="#6C3809" stopOpacity="0.14" />
+          <stop offset="100%" stopColor="#090502" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient
+          id="darkMicShellGrad"
+          x1="44"
+          y1="26"
+          x2="136"
+          y2="146"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#F6E3AD" />
+          <stop offset="22%" stopColor="#C89342" />
+          <stop offset="55%" stopColor="#5C3B16" />
+          <stop offset="85%" stopColor="#1D140B" />
+          <stop offset="100%" stopColor="#8F6224" />
+        </linearGradient>
+        <linearGradient
+          id="darkMicRibGrad"
+          x1="56"
+          y1="40"
+          x2="124"
+          y2="140"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#DDA95E" stopOpacity="0.85" />
+          <stop offset="50%" stopColor="#422B11" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#120C06" />
+        </linearGradient>
+        <linearGradient
+          id="darkMicStandGrad"
+          x1="84"
+          y1="148"
+          x2="96"
+          y2="275"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#E1AF64" />
+          <stop offset="35%" stopColor="#7C5220" />
+          <stop offset="75%" stopColor="#2A1C0D" />
+          <stop offset="100%" stopColor="#090502" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      {/* Warm atmospheric rim glow */}
+      <circle cx="94" cy="102" r="78" fill="url(#darkMicAura)" />
+
+      {/* Subtle gold bokeh particles */}
+      <circle cx="34" cy="76" r="1.4" fill="#F6E3AD" fillOpacity="0.7" />
+      <circle cx="26" cy="128" r="1.1" fill="#D4A24C" fillOpacity="0.55" />
+      <circle cx="48" cy="186" r="1.6" fill="#E6B366" fillOpacity="0.6" />
+      <circle cx="148" cy="52" r="1.3" fill="#F6E3AD" fillOpacity="0.65" />
+
+      {/* Tilted vintage condenser mic */}
+      <g transform="rotate(9 92 145)">
+        {/* Capsule silhouette */}
+        <rect
+          x="56"
+          y="26"
+          width="68"
+          height="112"
+          rx="34"
+          fill="url(#darkMicRibGrad)"
+          stroke="url(#darkMicShellGrad)"
+          strokeWidth="3.2"
+        />
+
+        {/* Inner acoustic mesh dark core */}
+        <rect x="63" y="34" width="54" height="96" rx="27" fill="#120C06" />
+
+        {/* Horizontal ribbed metallic louvers */}
+        <path
+          d="M62 48h56 M60 56h60 M59 64h62 M58 72h64 M58 80h64 M58 88h64 M58 96h64 M59 104h62 M60 112h60 M63 120h54"
+          stroke="url(#darkMicShellGrad)"
+          strokeWidth="3.1"
+          strokeLinecap="round"
+        />
+
+        {/* Center vertical spine highlight */}
+        <rect
+          x="87.5"
+          y="29"
+          width="5"
+          height="106"
+          rx="2.5"
+          fill="url(#darkMicShellGrad)"
+          fillOpacity="0.92"
+        />
+
+        {/* Top & bottom cap bands */}
+        <path
+          d="M66 130h48"
+          stroke="#F6E3AD"
+          strokeOpacity="0.55"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+
+        {/* U-shaped yoke mount */}
+        <path
+          d="M46 86v26c0 24 20 42 44 42s44-18 44-42V86"
+          stroke="url(#darkMicShellGrad)"
+          strokeWidth="5"
+          strokeLinecap="round"
+        />
+        {/* Side pivot bolts */}
+        <circle
+          cx="46"
+          cy="94"
+          r="5"
+          fill="#22170C"
+          stroke="#E1AF64"
+          strokeWidth="1.8"
+        />
+        <circle
+          cx="134"
+          cy="94"
+          r="5"
+          fill="#22170C"
+          stroke="#E1AF64"
+          strokeWidth="1.8"
+        />
+
+        {/* Neck collar & swivel nut */}
+        <rect
+          x="79"
+          y="153"
+          width="22"
+          height="13"
+          rx="3"
+          fill="#261A0D"
+          stroke="url(#darkMicShellGrad)"
+          strokeWidth="2.2"
+        />
+        <rect
+          x="83"
+          y="166"
+          width="14"
+          height="11"
+          rx="2"
+          fill="#3B2814"
+          stroke="#C89342"
+          strokeWidth="1.5"
+        />
+
+        {/* Slender stand fading behind bottom wave */}
+        <rect x="86.5" y="177" width="7" height="108" rx="3.5" fill="url(#darkMicStandGrad)" />
+        <line
+          x1="88.5"
+          y1="178"
+          x2="88.5"
+          y2="265"
+          stroke="#F6E3AD"
+          strokeOpacity="0.35"
+          strokeWidth="1.2"
+        />
+      </g>
+    </svg>
+  );
+}
+

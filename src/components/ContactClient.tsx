@@ -111,10 +111,10 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full btn-gold text-[10.5px] sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-4 cursor-pointer disabled:opacity-60"
+        className="w-full bg-gradient-to-r from-[#E8B86B] via-[#E1AF64] to-[#D49C49] text-[#160F06] font-semibold rounded-full text-[10.5px] sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-3.5 cursor-pointer disabled:opacity-60 shadow-[0_6px_18px_rgba(225,175,100,0.28)] hover:brightness-105 transition-all"
       >
-        <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z" />
         </svg>
         {status === "submitting" ? "Sending..." : "Send Message"}
       </button>
