@@ -208,7 +208,7 @@ export default function PortfolioClient() {
       </section>
 
       {/* Warm Champagne Ivory Section: Awards & Recognitions Gallery */}
-      <section id="awards" className="cream-section py-12 sm:py-20 relative overflow-hidden border-t border-gold/30">
+      <section id="awards" className="cream-section py-12 sm:py-20 relative overflow-hidden border-t border-gold/30 scroll-mt-16 sm:scroll-mt-20">
         <GoldenWaveRibbon variant="cream" className="absolute top-0 left-0 right-0 w-full h-20 sm:h-32 opacity-40 rotate-180 pointer-events-none" />
         <VintageMicWatermark className="absolute -bottom-6 right-0 w-36 h-32 sm:w-72 sm:h-64 pointer-events-none" opacityClass="opacity-20 sm:opacity-30" />
 

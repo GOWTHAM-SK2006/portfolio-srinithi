@@ -42,11 +42,11 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               {[
-                { href: "/", label: "Home" },
-                { href: "/about", label: "About" },
-                { href: "/portfolio", label: "Portfolio" },
-                { href: "/portfolio#awards", label: "Awards & Recognitions" },
-                { href: "/contact", label: "Contact" },
+                { href: "/#home", label: "Home" },
+                { href: "/#about", label: "About" },
+                { href: "/#portfolio", label: "Portfolio" },
+                { href: "/#awards", label: "Awards & Recognitions" },
+                { href: "/#contact", label: "Contact" },
               ].map((link) => (
                 <Link
                   key={link.href}

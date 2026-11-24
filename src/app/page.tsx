@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import HomeClient from "@/components/HomeClient";
 import AnimatedSection from "@/components/AnimatedSection";
+import AboutSections from "@/components/sections/AboutSections";
+import PortfolioSections from "@/components/sections/PortfolioSections";
+import ContactSections from "@/components/sections/ContactSections";
 import {
   CameraLensGraphic,
   GoldenCrescentArc,
@@ -17,7 +20,8 @@ import { ARTIST_STATS, SOCIAL_LINKS } from "@/data/portfolioData";
 export default function HomePage() {
   return (
     <div className="bg-[#090804]">
-      {/* Hero Section — Zero-Overlap Grid on Mobile & Full Reference Split on Desktop */}
+      <div id="home" className="scroll-mt-16 sm:scroll-mt-20">
+        {/* Hero Section — Zero-Overlap Grid on Mobile & Full Reference Split on Desktop */}
       <section className="relative hero-gradient overflow-hidden pt-16 sm:pt-20">
         <SpotlightBackdrop align="right" />
 
@@ -99,7 +103,7 @@ export default function HomePage() {
               {/* Pill Buttons */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-3.5 mb-5 sm:mb-8">
                 <Link
-                  href="/about"
+                  href="/#about"
                   className="bg-gradient-to-r from-[#E8B86B] via-[#E1AF64] to-[#D49C49] text-[#160F06] font-semibold rounded-full text-sm sm:text-sm lg:text-[15px] px-5 sm:px-6 py-2.5 sm:py-3 inline-flex items-center gap-2 shadow-[0_4px_14px_rgba(225,175,100,0.28)] hover:brightness-105 transition-all whitespace-nowrap"
                 >
                   Explore My Journey
@@ -109,7 +113,7 @@ export default function HomePage() {
                 </Link>
 
                 <Link
-                  href="/portfolio"
+                  href="/#portfolio"
                   className="border border-[#E1AF64]/60 bg-[#100C09]/70 backdrop-blur-sm text-[#F4EDE0] font-medium rounded-full text-sm sm:text-sm lg:text-[15px] px-5 sm:px-6 py-2.5 sm:py-3 inline-flex items-center gap-2 hover:bg-[#E1AF64]/15 transition-all whitespace-nowrap"
                 >
                   <span className="w-4 h-4 rounded-full border border-[#E1AF64]/80 flex items-center justify-center flex-shrink-0">
@@ -185,7 +189,7 @@ export default function HomePage() {
                   Recognitions
                 </h3>
                 <Link
-                  href="/portfolio#awards"
+                  href="/#awards"
                   className="bg-gradient-to-r from-[#E8B86B] via-[#E1AF64] to-[#D49C49] text-[#160F06] font-semibold rounded-full text-sm py-2.5 px-5 sm:px-6 inline-flex items-center gap-2 shadow-[0_4px_12px_rgba(225,175,100,0.25)] whitespace-nowrap"
                 >
                   View Awards
@@ -211,7 +215,7 @@ export default function HomePage() {
                   Portfolio
                 </h3>
                 <Link
-                  href="/portfolio"
+                  href="/#portfolio"
                   className="bg-gradient-to-r from-[#E8B86B] via-[#E1AF64] to-[#D49C49] text-[#160F06] font-semibold rounded-full text-sm py-2.5 px-5 sm:px-6 inline-flex items-center gap-2 shadow-[0_4px_12px_rgba(225,175,100,0.25)] whitespace-nowrap"
                 >
                   View Gallery
@@ -224,6 +228,12 @@ export default function HomePage() {
           </AnimatedSection>
         </div>
       </section>
+      </div>
+
+      {/* Continuous Single-Page Scroll Flow: About -> Portfolio -> Contact */}
+      <AboutSections embedded />
+      <PortfolioSections embedded />
+      <ContactSections embedded />
     </div>
   );
 }

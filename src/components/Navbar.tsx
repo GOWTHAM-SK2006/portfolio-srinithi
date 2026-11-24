@@ -6,27 +6,73 @@ import { usePathname } from "next/navigation";
 import { TrebleClefMark } from "@/components/BrandDecorations";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/contact", label: "Contact" },
-];
+  { id: "home", route: "/", href: "/#home", label: "Home" },
+  { id: "about", route: "/about", href: "/#about", label: "About" },
+  { id: "portfolio", route: "/portfolio", href: "/#portfolio", label: "Portfolio" },
+  { id: "contact", route: "/contact", href: "/#contact", label: "Contact" },
+] as const;
 
 export default function Navbar() {
   const pathname = usePathname();
   const [openForPath, setOpenForPath] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const isOpen = openForPath === pathname;
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const updateOnScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      if (pathname !== "/") return;
+
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 40;
+      if (atBottom && document.getElementById("contact")) {
+        setActiveSection("contact");
+        return;
+      }
+
+      let current = "home";
+      for (const link of navLinks) {
+        const el = document.getElementById(link.id);
+        if (el && el.getBoundingClientRect().top <= 160) {
+          current = link.id;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    const rafId = window.requestAnimationFrame(updateOnScroll);
+    window.addEventListener("scroll", updateOnScroll, { passive: true });
+    window.addEventListener("resize", updateOnScroll, { passive: true });
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", updateOnScroll);
+      window.removeEventListener("resize", updateOnScroll);
+    };
+  }, [pathname]);
 
   const toggleMenu = () => {
     setOpenForPath((prev) => (prev === pathname ? null : pathname));
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    setOpenForPath(null);
+    if (pathname === "/") {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const getIsActive = (link: (typeof navLinks)[number]) => {
+    if (pathname === "/") {
+      return activeSection === link.id;
+    }
+    return pathname === link.route;
   };
 
   return (
@@ -40,7 +86,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Brand Logo — Pure Metallic Gold Treble Clef */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
+          <Link
+            href="/#home"
+            onClick={(e) => handleLinkClick(e, "home")}
+            className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0"
+          >
             <TrebleClefMark className="w-6 h-8 sm:w-7 sm:h-9 drop-shadow-[0_0_10px_rgba(212,162,76,0.5)] group-hover:scale-105 transition-transform" />
             <div>
               <span className="block font-display text-base sm:text-xl font-semibold tracking-wider text-[#FFF7E2] group-hover:text-gold-light transition-colors leading-tight">
@@ -55,11 +105,12 @@ export default function Navbar() {
           {/* Centered Desktop Nav */}
           <div className="hidden md:flex items-center justify-center gap-10">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = getIsActive(link);
               return (
                 <Link
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.id)}
                   className={`text-[15px] font-medium tracking-wide transition-all relative py-1.5 ${
                     isActive
                       ? "text-gold-light"
@@ -111,11 +162,12 @@ export default function Navbar() {
       >
         <div className="bg-obsidian/98 backdrop-blur-xl border-t border-b border-gold/25 px-4 sm:px-8 py-4 space-y-1.5 shadow-2xl max-w-7xl mx-auto">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = getIsActive(link);
             return (
               <Link
-                key={link.href}
+                key={link.id}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, link.id)}
                 className={`block text-base font-medium py-3 px-4 rounded-xl transition-all ${
                   isActive
                     ? "text-gold-light bg-gold/15 border border-gold/35"
