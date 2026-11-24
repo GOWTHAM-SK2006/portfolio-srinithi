@@ -36,45 +36,41 @@ export default function AboutPage() {
         {/* Subtle Flowing Gold Lines along bottom-left edge */}
         <GoldenWaveRibbon className="absolute -bottom-8 left-0 right-0 w-full h-36 z-20 opacity-75" />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-14 pb-8 sm:pb-16 relative z-10">
+          <div className="relative flex items-center min-h-[180px] sm:min-h-[300px]">
             {/* Left Title */}
-            <div className="lg:col-span-6 animate-fade-in-up">
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-[3.85rem] font-normal leading-[1.06] mb-4">
+            <div className="relative z-20 w-[56%] sm:w-1/2 animate-fade-in-up">
+              <h1 className="font-display text-3xl sm:text-6xl lg:text-[3.85rem] font-normal leading-[1.06] mb-2 sm:mb-4">
                 <span className="block italic text-[#FAF6EE]">About</span>
                 <span className="block gold-gradient-text tracking-tight">
                   Srinithi Anand
                 </span>
               </h1>
-              <div className="w-24 h-px bg-gradient-to-r from-[#D4A24C]/85 to-transparent mb-5" />
-              <p className="text-[#EAE2CF]/90 text-sm sm:text-base tracking-[0.22em]">
+              <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-[#D4A24C]/85 to-transparent mb-2 sm:mb-5" />
+              <p className="text-[#EAE2CF]/90 text-[10px] sm:text-base tracking-[0.14em] sm:tracking-[0.22em]">
                 Singer &nbsp;|&nbsp; Performer &nbsp;|&nbsp; Artist
               </p>
             </div>
 
-            {/* Right Close Bust Portrait with Glowing Crescent Halo */}
-            <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-              <div className="relative w-72 h-72 sm:w-96 sm:h-80 lg:w-[430px] lg:h-[340px] flex items-end justify-center">
-                {/* Warm Golden Bronze Halo behind portrait */}
+            {/* Right Close Bust Portrait with Glowing Crescent Halo (visible on Mobile too!) */}
+            <div className="absolute -right-2 sm:right-0 bottom-0 w-[48%] sm:w-[46%] lg:w-[430px] h-[195px] sm:h-[310px] lg:h-[340px] flex items-end justify-end pointer-events-none z-10">
+              <div className="relative w-full h-full flex items-end justify-center">
                 <div
-                  className="pointer-events-none absolute -top-4 right-2 w-[320px] h-[320px] rounded-full blur-2xl opacity-75"
+                  className="pointer-events-none absolute -top-2 right-0 w-[180px] h-[180px] sm:w-[320px] sm:h-[320px] rounded-full blur-2xl opacity-75"
                   style={{
                     background:
                       "radial-gradient(circle, rgba(180, 111, 34, 0.52) 0%, rgba(180, 111, 34, 0.14) 55%, transparent 75%)",
                   }}
                 />
-                {/* Crisp Crescent Arc framing top-right edge like About reference */}
-                <GoldenCrescentArc className="absolute -top-6 right-0 w-[330px] h-[330px] sm:w-[390px] sm:h-[390px] scale-x-[-1] pointer-events-none z-0 opacity-95" />
-
-                {/* Bottom dark fade */}
-                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#080808] via-[#080808]/75 to-transparent z-20 pointer-events-none" />
+                <GoldenCrescentArc className="absolute -top-4 right-0 w-[195px] h-[195px] sm:w-[360px] sm:h-[360px] scale-x-[-1] pointer-events-none z-0 opacity-95" />
+                <div className="absolute inset-x-0 bottom-0 h-8 sm:h-14 bg-gradient-to-t from-[#080808] via-[#080808]/75 to-transparent z-20 pointer-events-none" />
 
                 <Image
                   src="/images/srinithi-portrait.png"
                   alt="Srinithi Anand"
                   fill
                   className="object-cover object-top scale-105 sepia-[0.11] saturate-[1.08] z-10 relative drop-shadow-[0_14px_30px_rgba(0,0,0,0.85)]"
-                  sizes="(max-width: 640px) 288px, 430px"
+                  sizes="(max-width: 640px) 200px, 430px"
                   priority
                 />
               </div>

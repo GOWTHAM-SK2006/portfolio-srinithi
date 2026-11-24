@@ -29,13 +29,13 @@ export default function ContactPage() {
           opacityClass="opacity-35"
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            {/* Portrait with Halo */}
-            <div className="hidden lg:flex justify-center">
-              <div className="relative w-80 h-[400px] flex items-end justify-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-20 sm:pt-32 pb-10 sm:pb-16 relative z-10 w-full">
+          <div className="grid grid-cols-12 gap-3 sm:gap-10 items-center">
+            {/* Portrait with Halo (Visible on Mobile & Desktop) */}
+            <div className="col-span-5 lg:col-span-6 flex justify-center">
+              <div className="relative w-full max-w-[165px] sm:max-w-[320px] h-[200px] sm:h-[360px] lg:h-[400px] flex items-end justify-center">
                 <div
-                  className="absolute top-4 w-72 h-72 rounded-full border border-gold-light/45 shadow-[0_0_55px_rgba(212,162,76,0.28)] pointer-events-none"
+                  className="absolute top-2 sm:top-4 w-36 h-36 sm:w-72 sm:h-72 rounded-full border border-gold-light/45 shadow-[0_0_55px_rgba(212,162,76,0.28)] pointer-events-none"
                   style={{
                     background:
                       "radial-gradient(circle, rgba(246, 227, 173, 0.22) 0%, transparent 72%)",
@@ -46,27 +46,27 @@ export default function ContactPage() {
                   alt="Srinithi Anand"
                   fill
                   className="object-contain object-bottom relative z-10 drop-shadow-[0_14px_34px_rgba(0,0,0,0.85)]"
-                  sizes="320px"
+                  sizes="(max-width: 640px) 165px, 320px"
                   priority
                 />
               </div>
             </div>
 
             {/* Contact Hero Copy */}
-            <div className="text-center lg:text-left animate-fade-in-up">
-              <p className="text-gold-mid text-xs tracking-[0.32em] uppercase font-medium mb-3">
+            <div className="col-span-7 lg:col-span-6 text-left animate-fade-in-up">
+              <p className="text-gold-mid text-[9px] sm:text-xs tracking-[0.24em] sm:tracking-[0.32em] uppercase font-medium mb-2 sm:mb-3">
                 Get In Touch
               </p>
-              <h1 className="font-display text-5xl sm:text-6xl font-bold mb-4 text-[#FFF7E2]">
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 text-[#FFF7E2]">
                 Contact{" "}
                 <span className="gold-gradient-text italic">Me</span>
               </h1>
-              <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
-                <div className="section-divider" />
-                <TrebleClefMark className="w-5 h-7" />
-                <div className="section-divider rotate-180" />
+              <div className="flex items-center justify-start gap-2 sm:gap-3 mb-3 sm:mb-5">
+                <div className="section-divider w-8 sm:w-20" />
+                <TrebleClefMark className="w-4 h-5 sm:w-5 sm:h-7" />
+                <div className="section-divider rotate-180 w-8 sm:w-20" />
               </div>
-              <p className="text-[#D5C8B0]/80 text-sm sm:text-base max-w-md mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-[#D5C8B0]/80 text-[10px] sm:text-sm lg:text-base max-w-md leading-relaxed">
                 For live concert performances, musical collaborations, special
                 events or media enquiries, feel free to reach out.
               </p>
