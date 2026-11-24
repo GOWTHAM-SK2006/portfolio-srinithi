@@ -24,7 +24,6 @@ export default function PortfolioClient() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [lightboxTitle, setLightboxTitle] = useState<string | undefined>(undefined);
 
-  const [activeFilter, setActiveFilter] = useState<string>("all");
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [tourDestination, setTourDestination] = useState<string>("All");
   const [awardsExpanded, setAwardsExpanded] = useState(false);
@@ -44,69 +43,18 @@ export default function PortfolioClient() {
     setExpandedCategory((prev) => (prev === categoryId ? null : categoryId));
   };
 
-  const visibleCategories =
-    activeFilter === "all"
-      ? PORTFOLIO_CATEGORIES
-      : PORTFOLIO_CATEGORIES.filter((c) => c.id === activeFilter);
-
   const displayedAwards = awardsExpanded
     ? AWARDS_GALLERY
     : AWARDS_GALLERY.slice(0, 8);
 
   return (
     <>
-      {/* Obsidian Portfolio Grid Section */}
-      <section className="py-6 sm:py-14 bg-obsidian relative overflow-hidden">
-        <div className="golden-wave" />
-
+      {/* 6 Gallery Cards — Exact 2x3 Grid Immediately Under Hero Wave (Mobile & Desktop) */}
+      <section className="pt-4 sm:pt-8 pb-6 sm:pb-14 bg-[#080604] relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-2.5 sm:px-6 lg:px-8 relative z-10">
-          {/* Quick Category Filter Bar (compact scrollable strip on mobile) */}
-          <div className="flex items-center sm:justify-center gap-1.5 sm:gap-2.5 mb-5 sm:mb-10 overflow-x-auto sm:flex-wrap pb-1 scrollbar-hide">
-            <button
-              onClick={() => setActiveFilter("all")}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide transition-all whitespace-nowrap flex-shrink-0 ${
-                activeFilter === "all"
-                  ? "bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian shadow-[0_4px_16px_rgba(212,162,76,0.35)]"
-                  : "border border-gold/30 bg-obsidian-card/70 text-[#E7DEC8]/80 hover:border-gold/65 hover:text-gold-light"
-              }`}
-            >
-              All Galleries
-            </button>
-
-            {PORTFOLIO_CATEGORIES.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setActiveFilter(cat.id);
-                  setExpandedCategory(cat.id);
-                }}
-                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide transition-all whitespace-nowrap flex-shrink-0 ${
-                  activeFilter === cat.id
-                    ? "bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian shadow-[0_4px_16px_rgba(212,162,76,0.35)]"
-                    : "border border-gold/30 bg-obsidian-card/70 text-[#E7DEC8]/80 hover:border-gold/65 hover:text-gold-light"
-                }`}
-              >
-                {cat.title}
-              </button>
-            ))}
-
-            <a
-              href="#awards"
-              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide border border-gold/45 bg-gold/10 text-gold-light hover:bg-gold/20 transition-all whitespace-nowrap flex-shrink-0"
-            >
-              Awards
-            </a>
-          </div>
-
-          {/* 6 Gallery Cards — Always 2x3 Side-by-Side Grid matching Reference 3! */}
-          <div
-            className={`grid gap-2.5 sm:gap-6 lg:gap-8 ${
-              activeFilter === "all" ? "grid-cols-2" : "grid-cols-1"
-            }`}
-          >
-            {visibleCategories.map((category, catIdx) => {
-              const isExpanded =
-                expandedCategory === category.id || activeFilter === category.id;
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-6 lg:gap-7">
+            {PORTFOLIO_CATEGORIES.map((category, catIdx) => {
+              const isExpanded = expandedCategory === category.id;
               const isTourDiaries = category.id === "tour-diaries";
 
               const tourFilteredImages =
@@ -129,25 +77,20 @@ export default function PortfolioClient() {
                 <AnimatedSection
                   key={category.id}
                   delay={catIdx * 60}
-                  className={isExpanded && activeFilter === "all" ? "col-span-2" : ""}
+                  className={isExpanded ? "col-span-2" : ""}
                 >
-                  <div className="gold-border-card rounded-xl sm:rounded-2xl p-2.5 sm:p-6 lg:p-7 h-full flex flex-col">
-                    {/* Card Header */}
-                    <div className="flex items-start justify-between gap-1.5 sm:gap-4 mb-2.5 sm:mb-5">
+                  <div className="gold-border-card rounded-xl sm:rounded-2xl px-2.5 sm:px-6 py-3 sm:py-5 h-full flex flex-col">
+                    {/* Card Header — Pure Gold Icon + Italic Title + Description + Right Chevron */}
+                    <div className="flex items-start justify-between gap-1.5 sm:gap-3 mb-2.5 sm:mb-4">
                       <div className="flex items-start gap-2 sm:gap-3.5 min-w-0">
-                        <div className="w-7 h-7 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl border border-gold/40 bg-gold/10 flex items-center justify-center text-gold-light flex-shrink-0">
-                          <GoldIcon name={category.icon} className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                        <div className="text-[#E1AF64] flex-shrink-0 pt-0.5">
+                          <GoldIcon name={category.icon} className="w-5 h-5 sm:w-8 sm:h-8 stroke-[1.6]" />
                         </div>
                         <div className="min-w-0">
-                          <div className="flex items-center gap-1.5 sm:gap-2.5 flex-wrap">
-                            <h2 className="font-display text-xs sm:text-xl lg:text-2xl font-bold text-[#FFF7E2] leading-tight">
-                              {category.title}
-                            </h2>
-                            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-gold/15 border border-gold/30 text-[10px] font-semibold text-gold-light tracking-wider">
-                              {category.images.length} Photos
-                            </span>
-                          </div>
-                          <p className="text-[8px] sm:text-xs lg:text-sm text-[#D5C8B0]/65 mt-0.5 sm:mt-1 leading-tight sm:leading-relaxed line-clamp-2">
+                          <h2 className="font-display italic text-[13px] sm:text-xl lg:text-2xl font-normal text-[#FAF6EE] leading-tight">
+                            {category.title}
+                          </h2>
+                          <p className="text-[7.5px] sm:text-xs text-[#D5C8B0]/75 mt-0.5 sm:mt-1 leading-snug line-clamp-2">
                             {category.description}
                           </p>
                         </div>
@@ -155,7 +98,7 @@ export default function PortfolioClient() {
 
                       <button
                         onClick={() => toggleCategory(category.id)}
-                        className="text-gold-light/70 hover:text-gold-light transition-colors p-0.5 sm:p-1.5 rounded-lg hover:bg-gold/10 flex-shrink-0"
+                        className="text-[#E1AF64]/80 hover:text-gold-light transition-colors p-0.5 sm:p-1 flex-shrink-0 cursor-pointer"
                         aria-label={isExpanded ? `Collapse ${category.title}` : `Expand ${category.title}`}
                       >
                         <svg
@@ -178,7 +121,7 @@ export default function PortfolioClient() {
                           <button
                             key={dest}
                             onClick={() => setTourDestination(dest)}
-                            className={`px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium transition-all ${
+                            className={`px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium transition-all cursor-pointer ${
                               tourDestination === dest
                                 ? "bg-gold text-obsidian font-semibold"
                                 : "border border-gold/30 text-[#E7DEC8]/75 hover:border-gold/60"
@@ -190,16 +133,17 @@ export default function PortfolioClient() {
                       </div>
                     )}
 
-                    {/* Image Thumbnails Grid */}
+                    {/* 4 Portrait Thumbnails */}
                     <div
-                      className={`grid gap-1 sm:gap-2.5 mb-2.5 sm:mb-5 flex-1 ${
+                      className={`grid gap-1 sm:gap-2 mb-2.5 sm:mb-4 flex-1 ${
                         isExpanded
                           ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5"
                           : "grid-cols-4"
                       }`}
                     >
                       {displayImages.map((img, idx) => {
-                        const lightboxSource = isTourDiaries && isExpanded ? tourFilteredImages : category.images;
+                        const lightboxSource =
+                          isTourDiaries && isExpanded ? tourFilteredImages : category.images;
                         const targetIndex =
                           isTourDiaries && !isExpanded
                             ? [0, 7, 14, 18][idx] ?? 0
@@ -211,7 +155,7 @@ export default function PortfolioClient() {
                             onClick={() =>
                               openLightbox(lightboxSource, targetIndex, category.title)
                             }
-                            className="relative aspect-[3/4] rounded-md sm:rounded-xl overflow-hidden border border-gold/25 hover:border-gold-light group cursor-pointer transition-all"
+                            className="relative aspect-[3/4] rounded-md sm:rounded-lg overflow-hidden border border-[#E1AF64]/50 hover:border-gold-light group cursor-pointer transition-all"
                           >
                             <Image
                               src={img.src}
@@ -223,8 +167,11 @@ export default function PortfolioClient() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-40 group-hover:opacity-80 transition-opacity" />
 
                             {(img.label || (isTourDiaries && isExpanded && img.subCategory)) && (
-                              <div className="absolute bottom-0 left-0 right-0 bg-obsidian/80 backdrop-blur-xs text-center py-0.5 sm:py-1.5 px-0.5 border-t border-gold/25">
-                                <span className="text-[6.5px] sm:text-[10px] font-medium text-gold-light flex items-center justify-center gap-0.5 truncate">
+                              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent text-center py-0.5 sm:py-1.5 px-0.5">
+                                <span className="text-[6px] sm:text-[10px] font-medium text-[#F5DC9F] flex items-center justify-center gap-0.5 truncate">
+                                  <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-[#E1AF64] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                                  </svg>
                                   {img.label ?? img.subCategory}
                                 </span>
                               </div>
@@ -234,23 +181,16 @@ export default function PortfolioClient() {
                       })}
                     </div>
 
-                    {/* Card Footer Action */}
-                    <div className="flex items-center justify-between gap-2 pt-0.5">
+                    {/* Centered Gold Pill CTA Button */}
+                    <div className="flex justify-center pt-0.5">
                       <button
                         onClick={() => toggleCategory(category.id)}
-                        className="bg-gradient-to-r from-[#E8B86B] via-[#E1AF64] to-[#D49C49] text-[#160F06] font-semibold rounded-full text-[8px] sm:text-xs py-1 sm:py-2.5 px-2.5 sm:px-5 inline-flex items-center gap-1 sm:gap-2 shadow-[0_4px_12px_rgba(225,175,100,0.25)] whitespace-nowrap cursor-pointer"
+                        className="bg-gradient-to-r from-[#E8B86B] via-[#E1AF64] to-[#D49C49] text-[#160F06] font-semibold rounded-full text-[8px] sm:text-xs py-1 sm:py-2 px-3 sm:px-5 inline-flex items-center gap-1 sm:gap-2 shadow-[0_4px_14px_rgba(225,175,100,0.25)] hover:brightness-105 transition-all whitespace-nowrap cursor-pointer"
                       >
                         {isExpanded ? "Show Less" : category.buttonText}
                         <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
-                      </button>
-
-                      <button
-                        onClick={() => openLightbox(category.images, 0, category.title)}
-                        className="hidden sm:inline-block text-xs text-gold-light/80 hover:text-gold-light underline underline-offset-4 transition-colors"
-                      >
-                        Open Lightbox
                       </button>
                     </div>
                   </div>
@@ -258,6 +198,12 @@ export default function PortfolioClient() {
               );
             })}
           </div>
+        </div>
+
+        {/* Bottom Treble Clef & Sweeping Golden Wave Divider */}
+        <div className="relative mt-6 sm:mt-12 pt-4 pb-2 flex items-center justify-center">
+          <GoldenWaveRibbon className="absolute inset-0 w-full h-full opacity-65" />
+          <TrebleClefMark className="w-6 h-8 sm:w-8 sm:h-11 relative z-10 opacity-90" />
         </div>
       </section>
 
@@ -327,11 +273,6 @@ export default function PortfolioClient() {
           </div>
         </div>
       </section>
-
-      {/* Treble Clef Closing Ornament */}
-      <div className="bg-obsidian flex items-center justify-center py-6 sm:py-10 border-t border-gold/20">
-        <TrebleClefMark className="w-7 h-10 sm:w-8 sm:h-11 opacity-75" />
-      </div>
 
       <Lightbox
         images={lightboxImages}
