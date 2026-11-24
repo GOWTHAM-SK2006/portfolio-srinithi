@@ -42,15 +42,15 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-5">
+      <div className="grid grid-cols-2 gap-2 sm:gap-5">
         <input
           type="text"
           placeholder="Your Name *"
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
+          className="w-full bg-obsidian/70 border border-gold/30 rounded-lg sm:rounded-xl px-2.5 sm:px-4 py-2 sm:py-3.5 text-[10px] sm:text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
         />
         <input
           type="tel"
@@ -58,7 +58,7 @@ export default function ContactForm() {
           required
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
+          className="w-full bg-obsidian/70 border border-gold/30 rounded-lg sm:rounded-xl px-2.5 sm:px-4 py-2 sm:py-3.5 text-[10px] sm:text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
         />
       </div>
 
@@ -68,7 +68,7 @@ export default function ContactForm() {
         required
         value={formData.email}
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
+        className="w-full bg-obsidian/70 border border-gold/30 rounded-lg sm:rounded-xl px-2.5 sm:px-4 py-2 sm:py-3.5 text-[10px] sm:text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
       />
 
       <div className="relative">
@@ -78,7 +78,7 @@ export default function ContactForm() {
           onChange={(e) =>
             setFormData({ ...formData, enquiryFor: e.target.value })
           }
-          className="w-full bg-obsidian-card border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#F7F1E3]/85 focus:border-gold-light focus:outline-none transition-colors appearance-none"
+          className="w-full bg-obsidian-card border border-gold/30 rounded-lg sm:rounded-xl px-2.5 sm:px-4 py-2 sm:py-3.5 text-[10px] sm:text-sm text-[#F7F1E3]/85 focus:border-gold-light focus:outline-none transition-colors appearance-none"
         >
           <option value="" disabled>
             Enquiry For *
@@ -90,7 +90,7 @@ export default function ContactForm() {
           <option value="Other">Other</option>
         </select>
         <svg
-          className="w-4 h-4 text-gold-light absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
+          className="w-3 h-3 sm:w-4 sm:h-4 text-gold-light absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 pointer-events-none"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -102,26 +102,26 @@ export default function ContactForm() {
       <textarea
         placeholder="Your Message *"
         required
-        rows={5}
+        rows={3}
         value={formData.message}
         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-        className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors resize-none"
+        className="w-full bg-obsidian/70 border border-gold/30 rounded-lg sm:rounded-xl px-2.5 sm:px-4 py-2 sm:py-3.5 text-[10px] sm:text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors resize-none"
       />
 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full btn-gold text-base flex items-center justify-center gap-2.5 py-4 cursor-pointer disabled:opacity-60"
+        className="w-full btn-gold text-[10.5px] sm:text-base flex items-center justify-center gap-1.5 sm:gap-2.5 py-2 sm:py-4 cursor-pointer disabled:opacity-60"
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
         </svg>
         {status === "submitting" ? "Sending..." : "Send Message"}
       </button>
 
       {status === "success" && (
-        <div className="rounded-xl border border-gold/45 bg-gold/10 px-4 py-3 text-center text-gold-light text-sm animate-fade-in">
-          {feedback} You can also reach{" "}
+        <div className="rounded-lg sm:rounded-xl border border-gold/45 bg-gold/10 px-3 py-2 text-center text-gold-light text-[10px] sm:text-sm animate-fade-in">
+          {feedback}{" "}
           <a href="mailto:srinithianand@gmail.com" className="underline font-semibold">
             srinithianand@gmail.com
           </a>
@@ -130,11 +130,10 @@ export default function ContactForm() {
       )}
 
       {status === "error" && (
-        <div className="rounded-xl border border-red-400/40 bg-red-950/35 px-4 py-3 text-center text-red-200 text-sm animate-fade-in">
+        <div className="rounded-lg sm:rounded-xl border border-red-400/40 bg-red-950/35 px-3 py-2 text-center text-red-200 text-[10px] sm:text-sm animate-fade-in">
           {feedback}
         </div>
       )}
     </form>
   );
 }
-

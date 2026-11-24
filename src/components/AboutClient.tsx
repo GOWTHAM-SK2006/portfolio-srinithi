@@ -21,7 +21,7 @@ export function JourneySpotlightCard() {
       <div className="relative group">
         <button
           onClick={() => setLightboxOpen(true)}
-          className="w-full rounded-2xl overflow-hidden border-2 border-[#C89445]/75 shadow-[0_14px_34px_rgba(95,62,18,0.18)] aspect-[16/10] relative block cursor-pointer text-left"
+          className="w-full rounded-xl sm:rounded-2xl overflow-hidden border border-[#C89445]/75 sm:border-2 shadow-[0_10px_28px_rgba(95,62,18,0.18)] aspect-[16/10] relative block cursor-pointer text-left"
           aria-label="Open stage and television highlights gallery"
         >
           <Image
@@ -29,13 +29,13 @@ export function JourneySpotlightCard() {
             alt="Srinithi Anand singing live with microphone"
             fill
             className="object-cover object-[50%_20%] group-hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="(max-width: 640px) 42vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
-          {/* Clean Circular Gold-Bordered Play Button (bottom-right) */}
-          <div className="absolute bottom-4 right-4 w-12 h-12 rounded-full border-2 border-[#E6B86A] bg-black/55 backdrop-blur-xs flex items-center justify-center group-hover:bg-[#E1AF64] group-hover:text-[#160F06] text-[#F5DC9F] transition-all shadow-lg">
-            <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+          {/* Clean Circular Gold-Bordered Play Button */}
+          <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-7 h-7 sm:w-12 sm:h-12 rounded-full border border-[#E6B86A] sm:border-2 bg-black/55 backdrop-blur-xs flex items-center justify-center group-hover:bg-[#E1AF64] group-hover:text-[#160F06] text-[#F5DC9F] transition-all shadow-lg">
+            <svg className="w-3 h-3 sm:w-5 sm:h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
@@ -95,24 +95,25 @@ export function AboutInterestsGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 max-w-3xl">
+      {/* 4 Cards in 1 Horizontal Row (leaving right space for Vintage Mic on mobile & desktop) */}
+      <div className="grid grid-cols-4 gap-1.5 sm:gap-4 lg:gap-5 max-w-[78%] sm:max-w-3xl">
         {interestGalleries.map((item, idx) => (
-          <AnimatedSection key={item.subtitle} delay={idx * 80}>
+          <AnimatedSection key={item.subtitle} delay={idx * 70}>
             <button
               onClick={() => {
                 setActiveImages(item.images);
                 setActiveTitle(`${item.title} ${item.subtitle}`);
                 setLightboxOpen(true);
               }}
-              className="w-full rounded-xl bg-[#FAF0DF]/90 border border-[#D4AC72]/65 px-4 py-6 text-center shadow-[0_8px_22px_rgba(140,98,38,0.1)] hover:border-[#B67E2B] hover:shadow-[0_12px_28px_rgba(140,98,38,0.2)] hover:-translate-y-1 transition-all group cursor-pointer"
+              className="w-full rounded-lg sm:rounded-xl bg-[#FAF0DF]/90 border border-[#D4AC72]/65 px-1.5 sm:px-4 py-2.5 sm:py-6 text-center shadow-[0_6px_18px_rgba(140,98,38,0.1)] hover:border-[#B67E2B] hover:shadow-[0_12px_28px_rgba(140,98,38,0.2)] hover:-translate-y-0.5 transition-all group cursor-pointer"
             >
-              <div className="w-10 h-10 mx-auto mb-3 flex items-center justify-center text-[#BC955E] group-hover:scale-110 transition-transform">
-                <GoldIcon name={item.icon} className="w-8 h-8 stroke-[1.6]" />
+              <div className="w-5 h-5 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-3 flex items-center justify-center text-[#BC955E] group-hover:scale-110 transition-transform">
+                <GoldIcon name={item.icon} className="w-4 h-4 sm:w-8 sm:h-8 stroke-[1.6]" />
               </div>
-              <span className="block text-sm font-medium text-[#2A1D10] leading-tight">
+              <span className="block text-[8px] sm:text-sm font-medium text-[#2A1D10] leading-tight">
                 {item.title}
               </span>
-              <span className="block text-sm font-medium text-[#2A1D10] leading-tight">
+              <span className="block text-[8px] sm:text-sm font-medium text-[#2A1D10] leading-tight">
                 {item.subtitle}
               </span>
             </button>
