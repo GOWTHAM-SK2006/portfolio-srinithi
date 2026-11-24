@@ -37,16 +37,16 @@ export default function Navbar() {
           : "bg-[#101010]/90 backdrop-blur-sm border-b border-[#E1AF64]/10"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Brand Logo — Pure Metallic Gold Treble Clef */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group flex-shrink-0">
-            <TrebleClefMark className="w-5 h-7 sm:w-7 sm:h-9 drop-shadow-[0_0_10px_rgba(212,162,76,0.5)] group-hover:scale-105 transition-transform" />
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
+            <TrebleClefMark className="w-6 h-8 sm:w-7 sm:h-9 drop-shadow-[0_0_10px_rgba(212,162,76,0.5)] group-hover:scale-105 transition-transform" />
             <div>
-              <span className="block font-display text-xs sm:text-lg font-semibold tracking-wider text-[#FFF7E2] group-hover:text-gold-light transition-colors leading-tight">
+              <span className="block font-display text-base sm:text-xl font-semibold tracking-wider text-[#FFF7E2] group-hover:text-gold-light transition-colors leading-tight">
                 SRINITHI ANAND
               </span>
-              <span className="block text-[7.5px] sm:text-[10px] tracking-[0.24em] text-gold uppercase font-medium">
+              <span className="block text-[10px] sm:text-xs tracking-[0.2em] text-gold uppercase font-medium">
                 Official Artist
               </span>
             </div>
@@ -60,7 +60,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium tracking-wide transition-all relative py-1.5 ${
+                  className={`text-[15px] font-medium tracking-wide transition-all relative py-1.5 ${
                     isActive
                       ? "text-gold-light"
                       : "text-[#EDE5D2]/85 hover:text-gold-light"
@@ -75,47 +75,27 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Compact Mobile Inline Links + Menu Toggle */}
-          <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
-            <div className="flex md:hidden items-center gap-2 text-[9.5px] font-medium whitespace-nowrap">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`py-1 relative ${
-                      isActive ? "text-gold-light" : "text-[#EDE5D2]/80"
-                    }`}
-                  >
-                    {link.label}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gold-light rounded-full" />
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-
+          {/* Menu Toggle Button */}
+          <div className="flex items-center flex-shrink-0">
             <button
               onClick={toggleMenu}
-              className="relative w-7 h-8 sm:w-10 sm:h-10 rounded-lg flex flex-col items-end justify-center gap-1 sm:gap-1.5 hover:opacity-80 transition-opacity cursor-pointer flex-shrink-0"
+              className="relative w-10 h-10 rounded-lg flex flex-col items-end justify-center gap-1.5 hover:opacity-80 transition-opacity cursor-pointer flex-shrink-0"
               aria-label="Toggle navigation menu"
               aria-expanded={isOpen}
             >
               <span
-                className={`block w-4 sm:w-6 h-[1.5px] bg-gold/90 transition-all duration-300 ${
-                  isOpen ? "rotate-45 translate-y-[5.5px] sm:translate-y-[7.5px]" : ""
+                className={`block w-6 h-[2px] bg-gold/90 transition-all duration-300 ${
+                  isOpen ? "rotate-45 translate-y-[8px]" : ""
                 }`}
               />
               <span
-                className={`block w-4 sm:w-6 h-[1.5px] bg-gold/90 transition-all duration-300 ${
+                className={`block w-6 h-[2px] bg-gold/90 transition-all duration-300 ${
                   isOpen ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`block w-4 sm:w-6 h-[1.5px] bg-gold/90 transition-all duration-300 ${
-                  isOpen ? "-rotate-45 -translate-y-[5.5px] sm:-translate-y-[7.5px]" : ""
+                className={`block w-6 h-[2px] bg-gold/90 transition-all duration-300 ${
+                  isOpen ? "-rotate-45 -translate-y-[8px]" : ""
                 }`}
               />
             </button>
@@ -136,7 +116,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block text-sm sm:text-base font-medium py-2.5 px-4 rounded-xl transition-all ${
+                className={`block text-base font-medium py-3 px-4 rounded-xl transition-all ${
                   isActive
                     ? "text-gold-light bg-gold/15 border border-gold/35"
                     : "text-[#E7DEC8]/85 hover:text-gold-light hover:bg-gold/10"

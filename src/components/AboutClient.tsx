@@ -34,8 +34,8 @@ export function JourneySpotlightCard() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
           {/* Clean Circular Gold-Bordered Play Button */}
-          <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-7 h-7 sm:w-12 sm:h-12 rounded-full border border-[#E6B86A] sm:border-2 bg-black/55 backdrop-blur-xs flex items-center justify-center group-hover:bg-[#E1AF64] group-hover:text-[#160F06] text-[#F5DC9F] transition-all shadow-lg">
-            <svg className="w-3 h-3 sm:w-5 sm:h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+          <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-[#E6B86A] bg-black/60 backdrop-blur-xs flex items-center justify-center group-hover:bg-[#E1AF64] group-hover:text-[#160F06] text-[#F5DC9F] transition-all shadow-lg">
+            <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
@@ -95,8 +95,8 @@ export function AboutInterestsGrid() {
 
   return (
     <>
-      {/* 4 Cards in 1 Horizontal Row (leaving right space for Vintage Mic on mobile & desktop) */}
-      <div className="grid grid-cols-4 gap-1.5 sm:gap-4 lg:gap-5 max-w-[78%] sm:max-w-3xl">
+      {/* 2x2 Cards on Mobile, 4-Column Row on Desktop (right space for Vintage Mic) */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 max-w-full sm:max-w-3xl">
         {interestGalleries.map((item, idx) => (
           <AnimatedSection key={item.subtitle} delay={idx * 70}>
             <button
@@ -105,15 +105,15 @@ export function AboutInterestsGrid() {
                 setActiveTitle(`${item.title} ${item.subtitle}`);
                 setLightboxOpen(true);
               }}
-              className="w-full rounded-lg sm:rounded-xl bg-[#FAF0DF]/90 border border-[#D4AC72]/65 px-1.5 sm:px-4 py-2.5 sm:py-6 text-center shadow-[0_6px_18px_rgba(140,98,38,0.1)] hover:border-[#B67E2B] hover:shadow-[0_12px_28px_rgba(140,98,38,0.2)] hover:-translate-y-0.5 transition-all group cursor-pointer"
+              className="w-full h-full rounded-xl bg-[#FAF0DF]/95 border border-[#D4AC72]/65 px-3 sm:px-4 py-4 sm:py-6 text-center shadow-[0_6px_18px_rgba(140,98,38,0.1)] hover:border-[#B67E2B] hover:shadow-[0_12px_28px_rgba(140,98,38,0.2)] hover:-translate-y-0.5 transition-all group cursor-pointer"
             >
-              <div className="w-5 h-5 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-3 flex items-center justify-center text-[#BC955E] group-hover:scale-110 transition-transform">
-                <GoldIcon name={item.icon} className="w-4 h-4 sm:w-8 sm:h-8 stroke-[1.6]" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 sm:mb-3 flex items-center justify-center text-[#BC955E] group-hover:scale-110 transition-transform">
+                <GoldIcon name={item.icon} className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.6]" />
               </div>
-              <span className="block text-[8px] sm:text-sm font-medium text-[#2A1D10] leading-tight">
+              <span className="block text-sm sm:text-[15px] font-medium text-[#2A1D10] leading-snug">
                 {item.title}
               </span>
-              <span className="block text-[8px] sm:text-sm font-medium text-[#2A1D10] leading-tight">
+              <span className="block text-sm sm:text-[15px] font-medium text-[#2A1D10] leading-snug">
                 {item.subtitle}
               </span>
             </button>

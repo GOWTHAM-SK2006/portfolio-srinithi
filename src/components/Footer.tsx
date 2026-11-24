@@ -21,15 +21,15 @@ export default function Footer() {
                 <TrebleClefMark className="w-6 h-8" />
               </div>
               <div>
-                <h3 className="font-display text-lg font-bold text-[#FFF7E2] group-hover:text-gold-light transition-colors">
+                <h3 className="font-display text-xl font-bold text-[#FFF7E2] group-hover:text-gold-light transition-colors">
                   SRINITHI ANAND
                 </h3>
-                <p className="text-[11px] tracking-[0.22em] text-gold uppercase">
+                <p className="text-xs tracking-[0.22em] text-gold uppercase">
                   Official Artist
                 </p>
               </div>
             </Link>
-            <p className="text-sm text-[#D5C8B0]/75 leading-relaxed mt-4 max-w-sm">
+            <p className="text-[15px] text-[#D5C8B0]/80 leading-relaxed mt-4 max-w-sm">
               A versatile vocalist celebrated for soulful performances across
               Carnatic, devotional, television, film and fusion music.
             </p>
@@ -37,7 +37,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-gold-light mb-4 text-xs tracking-[0.22em] uppercase">
+            <h4 className="font-semibold text-gold-light mb-4 text-xs sm:text-sm tracking-[0.22em] uppercase">
               Quick Links
             </h4>
             <div className="space-y-3">
@@ -51,7 +51,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-sm text-[#D5C8B0]/75 hover:text-gold-light transition-colors"
+                  className="block text-[15px] text-[#D5C8B0]/80 hover:text-gold-light transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -61,16 +61,16 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <div>
-            <h4 className="font-semibold text-gold-light mb-4 text-xs tracking-[0.22em] uppercase">
+            <h4 className="font-semibold text-gold-light mb-4 text-xs sm:text-sm tracking-[0.22em] uppercase">
               Connect
             </h4>
             <a
               href="mailto:srinithianand@gmail.com"
-              className="block text-sm text-[#D5C8B0]/85 hover:text-gold-light transition-colors mb-1.5"
+              className="block text-[15px] text-[#D5C8B0]/90 hover:text-gold-light transition-colors mb-1.5"
             >
               srinithianand@gmail.com
             </a>
-            <p className="text-sm text-[#D5C8B0]/65 mb-5">
+            <p className="text-[15px] text-[#D5C8B0]/70 mb-5">
               Chennai, Tamil Nadu, India
             </p>
             <div className="flex gap-3">
