@@ -25,11 +25,15 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Production & Deployment
+## Production & Deployment (Vercel)
 
 ```bash
 npm run build
 npm start
 ```
 
-Ready for zero-config deployment on Vercel.
+### Vercel Readiness
+- `vercel.json` configures Next.js framework preset, security headers, and immutable CDN caching for `/images/*`.
+- `next.config.ts` enables AVIF/WebP image optimization and long-lived cache TTLs.
+- Dynamic `robots.txt` (`src/app/robots.ts`) and `sitemap.xml` (`src/app/sitemap.ts`) resolve automatically via `VERCEL_PROJECT_PRODUCTION_URL` / `VERCEL_URL` (or optional `NEXT_PUBLIC_SITE_URL`).
+- Optional Contact Email Delivery (`POST /api/contact`): set `RESEND_API_KEY` (and optional `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL`) in Vercel Environment Variables. Without it, the contact form validates submissions and returns a safe acknowledgment.

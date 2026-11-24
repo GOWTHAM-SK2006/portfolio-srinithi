@@ -1,8 +1,7 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
+import ContactForm from "@/components/ContactClient";
 import {
   GoldenWaveRibbon,
   SocialIcon,
@@ -12,23 +11,13 @@ import {
 } from "@/components/BrandDecorations";
 import { SOCIAL_LINKS } from "@/data/portfolioData";
 
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact Srinithi Anand for live concert performances, musical collaborations, special events, and media enquiries in Chennai and worldwide.",
+};
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    enquiryFor: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: "", phone: "", email: "", enquiryFor: "", message: "" });
-  };
-
   return (
     <>
       {/* Hero Section — Obsidian Black + Golden Spotlight + Portrait Halo */}
@@ -197,101 +186,7 @@ export default function ContactPage() {
                     <span className="text-[#FFF7E2]">Send an</span>{" "}
                     <span className="gold-gradient-text italic">Enquiry</span>
                   </h2>
-
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <input
-                        type="text"
-                        placeholder="Your Name *"
-                        required
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
-                      />
-                      <input
-                        type="tel"
-                        placeholder="Phone Number *"
-                        required
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
-                      />
-                    </div>
-
-                    <input
-                      type="email"
-                      placeholder="Email Address *"
-                      required
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors"
-                    />
-
-                    <div className="relative">
-                      <select
-                        required
-                        value={formData.enquiryFor}
-                        onChange={(e) =>
-                          setFormData({ ...formData, enquiryFor: e.target.value })
-                        }
-                        className="w-full bg-obsidian-card border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#F7F1E3]/85 focus:border-gold-light focus:outline-none transition-colors appearance-none"
-                      >
-                        <option value="" disabled>
-                          Enquiry For *
-                        </option>
-                        <option value="performance">Live Concert Performance</option>
-                        <option value="collaboration">Music Collaboration</option>
-                        <option value="event">Special Event Booking</option>
-                        <option value="media">Television &amp; Media Enquiry</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <svg
-                        className="w-4 h-4 text-gold-light absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-
-                    <textarea
-                      placeholder="Your Message *"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      className="w-full bg-obsidian/70 border border-gold/30 rounded-xl px-4 py-3.5 text-sm text-[#FFF7E2] placeholder:text-[#D5C8B0]/45 focus:border-gold-light focus:outline-none transition-colors resize-none"
-                    />
-
-                    <button
-                      type="submit"
-                      className="w-full btn-gold text-base flex items-center justify-center gap-2.5 py-4 cursor-pointer"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                      Send Message
-                    </button>
-
-                    {submitted && (
-                      <div className="rounded-xl border border-gold/45 bg-gold/10 px-4 py-3 text-center text-gold-light text-sm animate-fade-in">
-                        Thank you! Your enquiry has been received. You can also write directly to{" "}
-                        <a href="mailto:srinithianand@gmail.com" className="underline font-semibold">
-                          srinithianand@gmail.com
-                        </a>
-                        .
-                      </div>
-                    )}
-                  </form>
+                  <ContactForm />
                 </div>
               </AnimatedSection>
             </div>

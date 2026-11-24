@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 import {
@@ -11,6 +12,12 @@ import {
   SpotlightBackdrop,
   VintageMicWatermark,
 } from "@/components/BrandDecorations";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Discover the musical journey of Srinithi Anand — Carnatic training, 150+ stage performances, 25+ awards, television appearances, and albums.",
+};
 
 const aboutStats = [
   { icon: "music" as const, number: "150+", label: "Stage Performances" },
