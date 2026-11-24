@@ -15,11 +15,10 @@ export interface GalleryCategory {
 }
 
 export const SOCIAL_LINKS = [
-  { name: "YouTube", href: "https://youtube.com" },
-  { name: "Instagram", href: "https://instagram.com" },
-  { name: "Facebook", href: "https://facebook.com" },
-  { name: "Spotify", href: "https://open.spotify.com" },
-  { name: "TikTok", href: "https://tiktok.com" },
+  { name: "Instagram", href: "https://www.instagram.com/srinithi_anand/" },
+  { name: "Facebook", href: "https://www.facebook.com/SrinithiAnandSinger/" },
+  { name: "YouTube", href: "https://www.youtube.com/@anandsindu" },
+  { name: "WhatsApp", href: "https://api.whatsapp.com/send?phone=919500040780" },
 ] as const;
 
 export const ARTIST_STATS = [

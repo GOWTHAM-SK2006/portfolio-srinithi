@@ -248,3 +248,4 @@ export default function AboutSections({ embedded = false }: { embedded?: boolean
     </div>
   );
 }
+
